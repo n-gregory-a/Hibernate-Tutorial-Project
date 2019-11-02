@@ -20,20 +20,24 @@ public class DeleteStudentDemo {
 
         try {
 
-            int studentId = 5;
+            //int studentId = 5;
 
             // now get a new session and start transaction
             session = factory.getCurrentSession();
             session.beginTransaction();
 
             // retrieve student based on the id: primary key
-            System.out.println("\nGetting student with id: " + studentId);
+            //System.out.println("\nGetting student with id: " + studentId);
 
-            Student myStudent = session.get(Student.class, studentId);
+            //Student myStudent = session.get(Student.class, studentId);
 
             // delete the student
-            System.out.println("Deleting student: " + myStudent);
-            session.delete(myStudent);
+            //System.out.println("Deleting student: " + myStudent);
+            //session.delete(myStudent);
+
+            // delete student id=2
+            System.out.println("Deleting student id=2");
+            session.createQuery("delete from Student s where s.id=2").executeUpdate();
 
             // commit the transaction
             session.getTransaction().commit();
