@@ -11,6 +11,7 @@
     <modules>
         <module>hibernate-mapping-one-to-one-uni</module>
         <module>hibernate-mapping-one-to-one-bi</module>
+        <module>hibernate-mapping-one-to-many</module>
     </modules>
 
     <dependencies>
