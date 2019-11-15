@@ -1,6 +1,8 @@
 package gn.hibernateDemo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "instructor")
@@ -29,6 +31,10 @@ import javax.persistence.*;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
+
+    @OneToMany(mappedBy = "instructor",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Course> courses;
 
     // create constructors
 
@@ -83,6 +89,14 @@ import javax.persistence.*;
         this.instructorDetail = instructorDetail;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
     // generate toString() method
 
     @Override
@@ -95,4 +109,17 @@ import javax.persistence.*;
                 ", instructorDetail=" + instructorDetail +
                 '}';
     }
+
+    // add convenience method for bi-directional relationship
+    public void add(Course course) {
+
+        if (courses == null) {
+            courses = new ArrayList<Course>();
+        }
+
+        courses.add(course);
+
+        course.setInstructor(this);
+    }
+
 }
