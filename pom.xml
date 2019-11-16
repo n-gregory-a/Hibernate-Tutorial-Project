@@ -12,6 +12,7 @@
         <module>hibernate-mapping-one-to-one-uni</module>
         <module>hibernate-mapping-one-to-one-bi</module>
         <module>hibernate-mapping-one-to-many</module>
+        <module>hb-eager-vs-lazy-demo</module>
     </modules>
 
     <dependencies>
