@@ -80,7 +80,7 @@ public class Course {
 
     // add convenience method
     public void addReview(Review review) {
-        if (review == null) {
+        if (reviews == null) {
             reviews = new ArrayList<Review>();
         }
 
